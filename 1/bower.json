@@ -1,0 +1,22 @@
+{
+  "name": "stye",
+  "description": "",
+  "main": "user.js",
+  "authors": [
+    "monzoor <mmtamal@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/monzoor/html-theme",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.2",
+    "bootstrap": "^3.3.6"
+  }
+}
