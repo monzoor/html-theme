@@ -17,6 +17,19 @@
   ],
   "dependencies": {
     "jquery": "^2.2.2",
-    "bootstrap": "^3.3.6"
+    "bootstrap": "3.3.4"
+  },
+  "exportsOverride": {
+    "bootstrap": {
+      "js": "**/bootstrap.min.js",
+      "css": "**/bootstrap.min.css"
+    },
+    "jquery": {
+      "js": "**/jquery.min.js"
+    },
+    "*": {
+      "js": "**/*.min.js",
+      "css": "**/*.min.css"
+    }
   }
 }
