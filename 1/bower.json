@@ -17,12 +17,20 @@
   ],
   "dependencies": {
     "jquery": "^2.2.2",
-    "bootstrap": "3.3.4"
+    "bootstrap": "3.3.4",
+    "animate.css": "^3.5.1"
   },
   "exportsOverride": {
     "bootstrap": {
       "js": "**/bootstrap.min.js",
-      "css": "**/bootstrap.min.css"
+      "css": "**/bootstrap.min.css",
+      "fonts": [
+        "**/glyphicons-halflings-regular.eot",
+        "**/glyphicons-halflings-regular.svg",
+        "**/glyphicons-halflings-regular.ttf",
+        "**/glyphicons-halflings-regular.woff",
+        "**/glyphicons-halflings-regular.woff2"
+      ]
     },
     "jquery": {
       "js": "**/jquery.min.js"

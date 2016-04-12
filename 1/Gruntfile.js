@@ -1,7 +1,6 @@
 module.exports = function(grunt){
 
 require('load-grunt-tasks')(grunt);
-require('time-grunt')(grunt);
 
 grunt.initConfig({
 	pkg: grunt.file.readJSON('package.json'),
@@ -16,8 +15,9 @@ grunt.initConfig({
 				]
 			},
 			options: {
-				useSingleQuotes: true
-			}
+        useSingleQuotes: true,
+        signature: '// Hello, World!'
+      }
 		}
 	},
 	sass: {
@@ -59,15 +59,19 @@ grunt.initConfig({
 		},
 		
 	  bower_component: {
-			files: ['assets/js/dist/**/*.js'],
-			tasks: ['wiredep']
+			files: ['bower_components/*/**'],
+			tasks: ['bower','tags']
 		},
 	},
+
+	// end of watch grunt
+
+	// bower: installing bower components and copy the min files only
   bower: {
 	  install: {
       options: {
-        targetDir: './lib',
-        layout: 'byType',
+        targetDir: './assets/library',
+        layout: 'byComponent',
         install: true,
         verbose: false,
         cleanTargetDir: false,
@@ -76,6 +80,8 @@ grunt.initConfig({
       }
     }
 	},
+
+	// And dynamic script and links
 	tags: {
 		buildLinks: {
       options: {
@@ -84,7 +90,8 @@ grunt.initConfig({
         closeTag: '<!-- end css template tags -->'
       },
       src: [
-        'lib/css/**/*.css'
+        'assets/library/**/*.min.css',
+        'assets/build/**/*.css'
       ],
       dest: 'index.html'
     },
@@ -95,8 +102,8 @@ grunt.initConfig({
           closeTag: '<!-- end script template tags -->'
       },
       src: [
-          'lib/js/jquery/jquery.min.js',
-          'lib/js/**/*.min.js'
+          'assets/library/**/jquery.min.js',
+          'assets/library/**/*.min.js'
       ],
       dest: 'index.html'
     }
@@ -113,10 +120,13 @@ grunt.initConfig({
 	}
 });
 
+require('time-grunt')(grunt);
+
+
 	grunt.registerTask('style',['sass_globbing','sass','autoprefixer']);
 
 	grunt.registerTask('default',['bower','tags','style']);
 
-	grunt.registerTask('server',['express','bower','tags','watch']);
+	grunt.registerTask('server',['express','default','watch']);
 
 };
